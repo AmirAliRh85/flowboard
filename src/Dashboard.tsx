@@ -6,6 +6,7 @@ import { WorkSpace, WorkSpaceBody, WorkSpaceHeader, WorkSpaceMiddle } from "./co
 import styles from "./Dashboard.module.css";
 import { PanelLeft, Search , ListFilterIcon, SlidersHorizontal } from "lucide-react";
 import { usePanelStore } from "./hooks/store";
+import { Dialog } from "./components/ui/Dialogm";
 
 
 
@@ -43,7 +44,6 @@ function Dashboard()
                 </WorkSpaceMiddle>
 
                 <WorkSpaceBody>
-
                 </WorkSpaceBody>
             </WorkSpace>
         </div>

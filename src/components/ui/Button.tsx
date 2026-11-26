@@ -10,7 +10,7 @@ type ButtonProps = {
 export default function Button(prop : ButtonProps)
 {
     return (
-        <button className={`Button ${prop.className ?? ""}`} onClick={prop.onClickFn} style={prop.style}>
+        <button onClick={prop.onClickFn} style={prop.style} className={`Button ${prop.className ?? ""}`}>
             {prop.children}
         </button>
     );

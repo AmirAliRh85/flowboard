@@ -1,5 +1,9 @@
 .container {
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: var(--padding);
+    gap: var(--panel-gap);
 }
 
 .container:not(.containerIsCollapsed)

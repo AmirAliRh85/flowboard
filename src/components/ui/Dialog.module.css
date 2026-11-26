@@ -1,0 +1,48 @@
+dialog.container::backdrop {
+    background-color: rgba(0 , 0 , 0 , 0.35);
+    backdrop-filter: blur(3px);
+    animation: backdrop-in 250ms ease-out;
+}
+
+dialog.container {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--dialog-border-radius);
+    padding: 0px;
+    width: 60vw;
+    height: 80vh;
+    overflow-y: auto;
+}
+
+dialog.container[open] {
+    animation: dialog-in 250ms ease-out;
+}
+
+
+@keyframes dialog-in {
+    from {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes backdrop-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* dialog.container {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
