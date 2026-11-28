@@ -1,0 +1,10 @@
+.container {
+    border: 1px solid var(--bg-secondary);
+    background-color: var(--bg-primary);
+    padding: var(--padding);
+    transition: border 100ms ease;
+}
+
+.container:hover {
+    border: 1px solid rgb(194, 194, 194);
+}

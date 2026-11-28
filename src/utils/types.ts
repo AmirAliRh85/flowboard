@@ -26,7 +26,7 @@ type Board =
     name : string;
     numOfTasks : number;
     numOfColumns : number;
-    columns : Board[];
+    columns : Column[];
 }
 
 export {type Card , type Column , type Board}

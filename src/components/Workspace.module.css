@@ -35,5 +35,9 @@
 .container4 {
     height: 100%;
     background-color: var(--bg-secondary);
+    display: flex;
+    flex-direction: row;
+    gap: var(--ws-body-gap);
     overflow-x: auto;
+    padding: 16px;
 }

@@ -2,12 +2,28 @@ import { WorkSpace , WorkSpaceBody , WorkSpaceHeader , WorkSpaceMiddle } from ".
 import Button from "./ui/Button";
 import { usePanelStore } from "../hooks/store";
 import { PanelLeft , Search , ListFilterIcon , SlidersHorizontal } from "lucide-react";
+import { useEffect, useState } from "react";
+import type { Board, Column } from "../utils/types";
+import { Column_C } from "./Column";
 
 function Projects()
 {
     const setIsCollapsed = usePanelStore((state) => state.setIsCollapsed);
+    const [boards , setBoards] = useState<Board>();
 
-    
+    useEffect(() =>
+    {
+        async function load()
+        {
+            const response = await fetch("/api/projects");
+            const data = await response.json();
+            console.log(data);
+            setBoards(data[0]);
+        };
+
+        load();
+
+    } , []);
 
     return (
         <WorkSpace>
@@ -33,7 +49,16 @@ function Projects()
                 </div>
             </WorkSpaceMiddle>
 
-            <WorkSpaceBody>
+            <WorkSpaceBody className="WorkSpaceBody">
+                {
+                    boards &&
+                    boards.columns.map((elem : Column) =>
+                    {
+                        return (
+                            <Column_C col={elem}/>
+                        );
+                    })
+                }
             </WorkSpaceBody>
         </WorkSpace>
     );
