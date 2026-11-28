@@ -3,7 +3,8 @@ import Button from "./ui/Button";
 import { usePanelStore } from "../hooks/store";
 import { ChevronDown, Search , Home, Plus, MoreHorizontal } from "lucide-react";
 import { useRef , useState , type CSSProperties } from "react";
-import { Dialog } from "./ui/Dialogm";
+import { Dialog } from "./ui/Dialog";
+import { Link } from "react-router";
 
 type PanelButtonProps = {
     children? : React.ReactNode;
@@ -11,23 +12,25 @@ type PanelButtonProps = {
     onClickFnInner? : (e : React.MouseEvent) => void;
     className? : string;
     style? : CSSProperties;
+
+    more? : boolean;
 };
+
 
 function PanelButton(props : PanelButtonProps)
 {
     const buttonRef = useRef<HTMLButtonElement | null>(null);
 
-    // useEffect(() =>
-    // {
-    //     addEventListener()
-    // });
-
     return (
         <button ref={buttonRef} onClick={props.onClickFn} className={`PanelButton ${props.className}`} style={props.style}>
             {props.children}
-            <Button className="p-4 icon" onClickFn={props.onClickFnInner}>
-                <MoreHorizontal width={16} height={16}/>
-            </Button>
+            {   
+                (props.more ?? true) &&
+
+                <Button className="p-4 icon" onClickFn={props.onClickFnInner}>
+                    <MoreHorizontal width={16} height={16}/>
+                </Button>
+            }
         </button>
     );
 };
@@ -49,14 +52,18 @@ function Panel()
                     <Search width={16} height={16}/>
                 </Button>
             </div>
+
             <div className="font-s">
-                <PanelButton className="w-f">
-                    <div className="flex-r gap">
-                        <Home width={16} height={16}/>
-                        <p>Home</p>
-                    </div>
-                </PanelButton>
+                <Link to="home">
+                    <PanelButton more={false} className="p-8">
+                            <div className="flex-r gap">
+                                <Home width={16} height={16}/>
+                                <p>Home</p>
+                            </div>
+                    </PanelButton>
+                </Link>
             </div>
+
             <div className="flex-c gap overflow-y">
                 <div className="flex-r">
                     <label className="font-s color">Projects</label>
@@ -66,12 +73,17 @@ function Panel()
                 </div>
 
                 <div>
-                    <PanelButton onClickFnInner={() => setIsOpen(!isOpen)}>
-                        <p>My first project</p>
-                    </PanelButton>
-                    <Dialog isOpen={isOpen} onClose={() => setIsOpen(false)}></Dialog>
+                    <Link to="projects">
+                        <PanelButton onClickFnInner={() => setIsOpen(!isOpen)}>
+                            <p>My first project</p>
+                        </PanelButton>
+                    </Link>
                 </div>
             </div>
+
+            <Dialog isOpen={isOpen} onClose={() => setIsOpen(false)}>
+
+            </Dialog>
         </div>
     );
 }

@@ -84,11 +84,15 @@ dialog {
 .PanelButton:hover .icon {
     opacity: 1;
 }
+
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
 .overflow-y {
     overflow-y: auto;
 }
-
-
 .flex-r {
     display: flex;
     flex-direction: row;
@@ -119,6 +123,9 @@ dialog {
 }
 .p-4 {
     padding: 4px;
+}
+.p-8 {
+    padding: 8px;
 }
 .circle {
     border-radius: 50%;
